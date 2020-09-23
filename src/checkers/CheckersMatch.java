@@ -29,8 +29,31 @@ public class CheckersMatch {
     }
 
     private void initialSetup() {
-        placeNewPiece('b', 6, new Pawn(board, Color.WHITE));
-        placeNewPiece('e', 8, new Pawn(board, Color.BLACK));
+        placeNewPiece('a', 1, new Pawn(board, Color.WHITE));
+        placeNewPiece('c', 1, new Pawn(board, Color.WHITE));
         placeNewPiece('e', 1, new Pawn(board, Color.WHITE));
+        placeNewPiece('g', 1, new Pawn(board, Color.WHITE));
+        placeNewPiece('h', 2, new Pawn(board, Color.WHITE));
+        placeNewPiece('f', 2, new Pawn(board, Color.WHITE));
+        placeNewPiece('d', 2, new Pawn(board, Color.WHITE));
+        placeNewPiece('b', 2, new Pawn(board, Color.WHITE));
+        placeNewPiece('a', 3, new Pawn(board, Color.WHITE));
+        placeNewPiece('c', 3, new Pawn(board, Color.WHITE));
+        placeNewPiece('e', 3, new Pawn(board, Color.WHITE));
+        placeNewPiece('g', 3, new Pawn(board, Color.WHITE));
+
+        placeNewPiece('b', 8, new Pawn(board, Color.BLACK));
+        placeNewPiece('d', 8, new Pawn(board, Color.BLACK));
+        placeNewPiece('f', 8, new Pawn(board, Color.BLACK));
+        placeNewPiece('h', 8, new Pawn(board, Color.BLACK));
+        placeNewPiece('g', 7, new Pawn(board, Color.BLACK));
+        placeNewPiece('e', 7, new Pawn(board, Color.BLACK));
+        placeNewPiece('c', 7, new Pawn(board, Color.BLACK));
+        placeNewPiece('a', 7, new Pawn(board, Color.BLACK));
+        placeNewPiece('b', 6, new Pawn(board, Color.BLACK));
+        placeNewPiece('d', 6, new Pawn(board, Color.BLACK));
+        placeNewPiece('f', 6, new Pawn(board, Color.BLACK));
+        placeNewPiece('h', 6, new Pawn(board, Color.BLACK));
+
     }
 }
