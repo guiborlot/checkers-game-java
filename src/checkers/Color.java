@@ -1,4 +1,6 @@
 package checkers;
 
-public class Color {
+public enum Color {
+    BLACK,
+    WHITE;
 }
