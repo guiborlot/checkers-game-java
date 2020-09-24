@@ -1,8 +1,11 @@
 package boardgame;
 
+import checkers.Color;
+
 public abstract class Piece {
     protected Position position;
     private Board board;
+    private Color color;
 
     public Piece(Board board) {
         this.board = board;
@@ -11,6 +14,10 @@ public abstract class Piece {
 
     protected Board getBoard() {
         return board;
+    }
+
+    protected Color getColor() {
+        return color;
     }
 
     public abstract boolean[][] possibleMoves();
