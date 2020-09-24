@@ -29,6 +29,12 @@ public class CheckersMatch {
         return (color == Color.WHITE) ? Color.BLACK : Color.WHITE;
     }
 
+    public boolean[][] possibleMoves(CheckersPosition sourcePosition){
+        Position position = sourcePosition.toPosition();
+        validateSourcePosition(position);
+        return board.piece(position).possibleMoves();
+    }
+
     public CheckersPiece performCheckersMove(CheckersPosition sourcePosition, CheckersPosition targetPosition) {
         Position source = sourcePosition.toPosition();
         Position target = targetPosition.toPosition();
