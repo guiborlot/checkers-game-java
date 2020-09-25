@@ -1,9 +1,13 @@
 package checkers.pieces;
 
 import boardgame.Board;
+import boardgame.Piece;
 import boardgame.Position;
+import checkers.CheckersMatch;
 import checkers.CheckersPiece;
 import checkers.Color;
+
+import java.awt.*;
 
 public class Pawn extends CheckersPiece{
 
@@ -21,7 +25,6 @@ public class Pawn extends CheckersPiece{
         boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()];
 
         Position p = new Position(0, 0);
-        Position opponent = new Position(0, 0);
 
         if(getColor() == Color.BLACK) {
             //SO
@@ -36,6 +39,7 @@ public class Pawn extends CheckersPiece{
                     mat[p.getRow()][p.getColumn()] = true;
                     p.setRow(p.getRow() + 2);
                     p.setColumn(p.getColumn() - 2);
+
                 }
             }
 
@@ -52,6 +56,7 @@ public class Pawn extends CheckersPiece{
                     mat[p.getRow()][p.getColumn()] = true;
                     p.setRow(p.getRow() + 2);
                     p.setColumn(p.getColumn() + 2);
+
                 }
             }
         }
@@ -84,6 +89,7 @@ public class Pawn extends CheckersPiece{
                     mat[p.getRow()][p.getColumn()] = true;
                     p.setRow(p.getRow() - 2);
                     p.setColumn(p.getColumn() + 2);
+
                 }
             }
         }

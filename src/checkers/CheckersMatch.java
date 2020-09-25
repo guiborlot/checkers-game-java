@@ -1,5 +1,8 @@
 package checkers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import boardgame.Board;
 import boardgame.Piece;
 import boardgame.Position;
@@ -10,6 +13,9 @@ public class CheckersMatch {
     private int turn;
     private Color currentPlayer;
     private Board board;
+
+    private List<Piece> piecesOnTheBoard = new ArrayList<>();
+    private List<Piece> capturedPieces = new ArrayList<>();
 
     public CheckersMatch() {
         board = new Board(8,8);
@@ -37,6 +43,11 @@ public class CheckersMatch {
         return mat;
     }
 
+    public void addCapturedPiece(Piece p){
+        capturedPieces.add(p);
+        piecesOnTheBoard.remove(p);
+    }
+
     public Color opponent(Color color){
         return (color == Color.WHITE) ? Color.BLACK : Color.WHITE;
     }
@@ -61,6 +72,48 @@ public class CheckersMatch {
         Piece p = board.removePiece(source);
         Piece capturedPiece = board.removePiece(target);
         board.placePiece(p, target);
+
+        if(capturedPiece != null) {
+            piecesOnTheBoard.remove(capturedPiece);
+            capturedPieces.add(capturedPiece);
+        }
+
+        if(p instanceof Pawn && (target.getColumn() == source.getColumn() + 2 || target.getColumn() == source.getColumn() - 2)) {
+            if(source.getColumn() < target.getColumn()){
+                if(source.getRow() < target.getRow()){
+                    Position pos = new Position(target.getRow() - 1, target.getColumn() - 1);
+                    capturedPiece = board.removePiece(pos);
+                    if(capturedPiece != null) {
+                        piecesOnTheBoard.remove(capturedPiece);
+                        capturedPieces.add(capturedPiece);
+                    }
+                } else {
+                    Position pos = new Position(target.getRow() + 1, target.getColumn() - 1);
+                    capturedPiece = board.removePiece(pos);
+                    if(capturedPiece != null) {
+                        piecesOnTheBoard.remove(capturedPiece);
+                        capturedPieces.add(capturedPiece);
+                    }
+                }
+            } else {
+                if(source.getRow() > target.getRow()){
+                    Position pos = new Position(target.getRow() + 1, target.getColumn() + 1);
+                    capturedPiece = board.removePiece(pos);
+                    if(capturedPiece != null) {
+                        piecesOnTheBoard.remove(capturedPiece);
+                        capturedPieces.add(capturedPiece);
+                    }
+                } else {
+                    Position pos = new Position(target.getRow() - 1, target.getColumn() + 1);
+                    capturedPiece = board.removePiece(pos);
+                    if(capturedPiece != null) {
+                        piecesOnTheBoard.remove(capturedPiece);
+                        capturedPieces.add(capturedPiece);
+                    }
+                }
+            }
+        }
+
         return capturedPiece;
     }
 
@@ -89,6 +142,7 @@ public class CheckersMatch {
 
     private void placeNewPiece(char column, int row, CheckersPiece piece) {
         board.placePiece(piece, new CheckersPosition(column, row).toPosition());
+        piecesOnTheBoard.add(piece);
     }
 
     private void initialSetup() {

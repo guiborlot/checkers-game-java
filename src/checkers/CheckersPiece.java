@@ -20,6 +20,9 @@ public abstract class CheckersPiece extends Piece {
 
     protected boolean isThereOpponentPiece(Position position) {
         CheckersPiece p = (CheckersPiece)getBoard().piece(position);
+
         return p != null && p.getColor() != color;
+
     }
+
 }
